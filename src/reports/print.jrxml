@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="print" language="groovy" pageWidth="400" pageHeight="842" columnWidth="360" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isIgnorePagination="true" uuid="216177a9-5351-45c2-beaa-28ea92696e54">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="48"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="inv_id" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     cart.`cartid` AS cart_cartid,
+     cart.`INID` AS cart_INID,
+     cart.`Product_Name` AS cart_Product_Name,
+     cart.`Bar_code` AS cart_Bar_code,
+     cart.`qty` AS cart_qty,
+     cart.`Unit_Price` AS cart_Unit_Price,
+     cart.`Total_Price` AS cart_Total_Price,
+     sales.`saleid` AS sales_saleid,
+     sales.`INID` AS sales_INID,
+     sales.`Cid` AS sales_Cid,
+     sales.`Customer_Name` AS sales_Customer_Name,
+     sales.`Total_Qty` AS sales_Total_Qty,
+     sales.`Total_Bill` AS sales_Total_Bill,
+     sales.`Paid_Amount` AS sales_Paid_Amount,
+     sales.`Status` AS sales_Status,
+     sales.`Balance` AS sales_Balance
+FROM
+     `cart` cart INNER JOIN `sales` sales ON cart.`INID` = sales.`INID`
+WHERE
+     cart.`INID` = $P{inv_id}]]>
+	</queryString>
+	<field name="cart_cartid" class="java.lang.Integer"/>
+	<field name="cart_INID" class="java.lang.Integer"/>
+	<field name="cart_Product_Name" class="java.lang.String"/>
+	<field name="cart_Bar_code" class="java.lang.String"/>
+	<field name="cart_qty" class="java.lang.String"/>
+	<field name="cart_Unit_Price" class="java.lang.String"/>
+	<field name="cart_Total_Price" class="java.lang.String"/>
+	<field name="sales_saleid" class="java.lang.Integer"/>
+	<field name="sales_INID" class="java.lang.Integer"/>
+	<field name="sales_Cid" class="java.lang.Integer"/>
+	<field name="sales_Customer_Name" class="java.lang.String"/>
+	<field name="sales_Total_Qty" class="java.lang.String"/>
+	<field name="sales_Total_Bill" class="java.lang.String"/>
+	<field name="sales_Paid_Amount" class="java.lang.String"/>
+	<field name="sales_Status" class="java.lang.String"/>
+	<field name="sales_Balance" class="java.lang.String"/>
+	<group name="my">
+		<groupFooter>
+			<band height="113">
+				<staticText>
+					<reportElement style="Column header" x="138" y="20" width="120" height="15" forecolor="#000000" uuid="4e18d022-1021-49e8-83d7-f90f612d0f6c"/>
+					<textElement textAlignment="Right"/>
+					<text><![CDATA[TOTAL AMOUNT :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="138" y="59" width="120" height="15" forecolor="#000000" uuid="80014a93-2c68-4c4d-957a-a13d4ceb43a4"/>
+					<textElement textAlignment="Right"/>
+					<text><![CDATA[BALANCE / DUE :]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="275" y="19" width="75" height="16" uuid="201dbe6f-301b-4ad1-b332-d6b43608cf07"/>
+					<textElement textAlignment="Right">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{sales_Total_Bill}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="0" y="0" width="360" height="1" uuid="53565181-5017-4d8d-838a-8334a865ceaa"/>
+					<graphicElement>
+						<pen lineWidth="0.75" lineStyle="Solid" lineColor="#CCCCCC"/>
+					</graphicElement>
+				</line>
+				<textField>
+					<reportElement x="275" y="59" width="75" height="26" uuid="7847f50c-b818-406e-8013-07266e2c5bc3"/>
+					<textElement textAlignment="Right">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{sales_Balance}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="Column header" x="138" y="40" width="120" height="15" forecolor="#000000" uuid="6d3eb92c-1cf8-41bb-ac58-81dcb1453a2e"/>
+					<textElement textAlignment="Right"/>
+					<text><![CDATA[PAID AMOUNT :]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="275" y="40" width="75" height="15" uuid="10817c4b-0c0b-4aa6-bb95-3684ebd7a4a2"/>
+					<textElement textAlignment="Right"/>
+					<textFieldExpression><![CDATA[$F{sales_Paid_Amount}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="SubTitle" x="0" y="96" width="360" height="14" forecolor="#000000" uuid="a5cc27b2-d2e6-4ee1-a966-933050447fab"/>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
+						<font fontName="Garamond" size="12"/>
+					</textElement>
+					<text><![CDATA[Thank You Come Again!]]></text>
+				</staticText>
+				<line>
+					<reportElement x="0" y="95" width="360" height="1" uuid="adfdbed4-0c19-4bf9-a4ec-85b20c3ccc06"/>
+					<graphicElement>
+						<pen lineWidth="0.75" lineStyle="Double" lineColor="#333333"/>
+					</graphicElement>
+				</line>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="122" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="0" y="34" width="360" height="23" uuid="4fcac11f-21ad-49e8-af8a-32c42021425d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Garamond" size="14"/>
+				</textElement>
+				<text><![CDATA[VICTORIAN TRADE CENTRE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="0" y="57" width="360" height="41" uuid="51dc7486-41da-4dd3-9adb-b27296095e0c"/>
+				<textElement textAlignment="Center">
+					<font fontName="Garamond" size="12"/>
+				</textElement>
+				<text><![CDATA[  08A, Main Street
+  Kahatagasdigiliya
+     025-2247367]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="288" y="106" width="34" height="15" uuid="c9709def-7b01-4625-9b69-9e5148a09d18"/>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[INID :]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Detail" x="321" y="106" width="39" height="15" uuid="592f9ba0-77d3-4bf3-924d-b7b163a533f1"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$F{cart_INID}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy HH.mm.ss">
+				<reportElement style="Column header" x="0" y="101" width="160" height="20" uuid="bec8a473-0c17-4783-a2dd-9329a21f74bb"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="0" y="6" width="124" height="15" uuid="3e1b519e-bab9-46a0-9482-a90cabb6c51c"/>
+				<text><![CDATA[Product_Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="124" y="6" width="72" height="15" uuid="94375d8b-f833-4f74-b1e6-936538244b75"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Qty]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="196" y="6" width="79" height="15" uuid="4c51d5ad-1305-4dc2-83a9-91cf3a4642c5"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Unit Price]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="275" y="7" width="85" height="15" uuid="c82abe5d-f845-4c7d-bcd8-5e735f955d42"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Total Price]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="0" width="360" height="1" uuid="70157aa0-600e-424e-8eb4-e8534aa45b58"/>
+				<graphicElement>
+					<pen lineWidth="2.0" lineStyle="Double"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="0" y="21" width="360" height="1" uuid="126037c1-aa94-45ef-877c-dbb10cd5ad77"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Solid" lineColor="#CCCCCC"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Detail" x="0" y="1" width="124" height="15" uuid="ee1e7823-7d1b-4b7a-9bb6-9393235f7c67"/>
+				<textFieldExpression><![CDATA[$F{cart_Product_Name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="124" y="1" width="72" height="15" uuid="dda5c160-a24c-4fed-8190-6e794700c678"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{cart_qty}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="196" y="1" width="79" height="15" uuid="cc2e1c7c-8cf7-40bc-9fa5-b227d1cb62a6"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{cart_Unit_Price}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="275" y="1" width="75" height="15" uuid="35fb2983-f1cb-4d4e-8399-da52713fcd64"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{cart_Total_Price}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

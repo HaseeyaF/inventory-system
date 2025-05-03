@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="sidSupplier" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isIgnorePagination="true" uuid="966956e1-72d0-4e53-9ce7-bc2461cfa885">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="2"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="Para_sid" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT * FROM supplier WHERE sid = $P{Para_sid}]]>
+	</queryString>
+	<field name="sid" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="supplier_Name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Tp_Number" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Billing_Address" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Shipping_Address" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Bank" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="City" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Product" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Position" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Contact_Person" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Person_tp" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="email" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="online" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Private_Note" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="0" y="13" width="156" height="33" uuid="d6b773db-2948-40ff-a0ba-d8e33ba99a1f"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Supplier ID:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="117" y="46" width="157" height="22" uuid="629c7fe9-1ff6-4ef1-a408-f0fc87a50fa6"/>
+				<text><![CDATA[REPORT]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="156" y="13" width="117" height="31" uuid="d8f1ab41-6dfa-4c83-8b7c-d5b661b0569b"/>
+				<textElement verticalAlignment="Middle">
+					<font size="20"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Para_sid}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="5" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="255" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="2" width="555" height="1" uuid="a8f33852-558a-416d-8490-cddcbf0fe3bc"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="127" y="7" width="213" height="15" uuid="4ae0a7fc-2678-4855-9f29-daefd5d3a94d"/>
+				<textFieldExpression><![CDATA[$F{supplier_Name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="127" y="23" width="213" height="15" uuid="8e47d3cf-86b2-4d24-9ece-f3de1d4422aa"/>
+				<textFieldExpression><![CDATA[$F{Tp_Number}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="127" y="38" width="213" height="15" uuid="fa18d6d4-f4dd-4b10-a2db-42927b506d66"/>
+				<textFieldExpression><![CDATA[$F{Billing_Address}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="127" y="53" width="213" height="15" uuid="076ac624-25a1-4ec8-9ff0-198ce5820bb8"/>
+				<textFieldExpression><![CDATA[$F{Shipping_Address}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="127" y="68" width="213" height="15" uuid="b718164f-7c36-437d-ab09-400b84a2cf69"/>
+				<textFieldExpression><![CDATA[$F{Bank}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="127" y="83" width="213" height="15" uuid="f605beec-c69c-42f7-bd3d-389b38b1e3df"/>
+				<textFieldExpression><![CDATA[$F{City}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="127" y="98" width="213" height="15" uuid="39d72a7f-7ad7-4892-8e21-7c30389a6fdc"/>
+				<textFieldExpression><![CDATA[$F{Product}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="127" y="113" width="213" height="15" uuid="a9e34a14-c174-4782-9ca2-6f930fb35837"/>
+				<textFieldExpression><![CDATA[$F{Position}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="127" y="128" width="213" height="15" uuid="bc643375-4ba2-4c70-b247-dd873ca6b4ee"/>
+				<textFieldExpression><![CDATA[$F{Contact_Person}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="127" y="143" width="213" height="15" uuid="c81c2411-c715-43e4-a859-d5e5dbce5095"/>
+				<textFieldExpression><![CDATA[$F{Person_tp}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="127" y="158" width="213" height="15" uuid="6d7c9453-e140-47ca-b83f-46cebcc0ac16"/>
+				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="127" y="173" width="213" height="15" uuid="fbe39596-e43f-4280-9878-6319ea41a6c0"/>
+				<textFieldExpression><![CDATA[$F{online}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="127" y="188" width="213" height="31" uuid="905e3bef-1961-4f54-be2d-676e72055354"/>
+				<textFieldExpression><![CDATA[$F{Private_Note}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="0" y="7" width="93" height="15" uuid="80daff5e-5e32-470a-9c68-5e079a84f930"/>
+				<text><![CDATA[Supplier Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="0" y="23" width="93" height="15" uuid="4b580ac8-1ed7-49d0-b1d7-c3d879ff19d8"/>
+				<text><![CDATA[Tp Number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="0" y="38" width="93" height="15" uuid="12176a97-f41e-4c9b-9134-76ba3f13c78e"/>
+				<text><![CDATA[Billing Address]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="0" y="53" width="117" height="15" uuid="f7fb1626-3fdd-4dd6-84d7-6e6cf4503ea4"/>
+				<text><![CDATA[Shipping Address]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="0" y="68" width="39" height="15" uuid="469f6331-14da-4a5c-9afb-b4ed717ed891"/>
+				<text><![CDATA[Bank]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="0" y="83" width="39" height="15" uuid="9716fa46-6c71-4b45-8d36-a1cef6ec8671"/>
+				<text><![CDATA[City]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="0" y="98" width="67" height="15" uuid="54d4be2e-b6e3-48d2-9a32-76f9336398e3"/>
+				<text><![CDATA[Product]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="0" y="113" width="67" height="15" uuid="23872ed0-6cb8-442a-b419-f78997d993d0"/>
+				<text><![CDATA[Position]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="0" y="128" width="107" height="15" uuid="53606cf8-5a59-4722-a11c-83f00e5f8221"/>
+				<text><![CDATA[Contact Person]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="0" y="143" width="78" height="15" uuid="2b2a494e-f689-467a-802e-ded82c65af06"/>
+				<text><![CDATA[Person Tp]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="0" y="158" width="56" height="15" uuid="d6997113-d6fb-4d2a-9621-32fde9c67629"/>
+				<text><![CDATA[E-mail]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="0" y="173" width="56" height="15" uuid="6d43ad0b-c374-4b05-922d-60d703d2d417"/>
+				<text><![CDATA[Online]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="0" y="188" width="93" height="15" uuid="f1798ac3-1ffd-4e59-933f-1a1f0831ccdf"/>
+				<text><![CDATA[Private Note]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="13" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="31657833-4fef-4fb1-83a8-53fb369125b4"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="66dd0f4d-f4d5-4956-ba55-5d44ebcb6291"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="5c3115db-83a1-422b-ae80-f1d9efd6f3da"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="f9a69fae-90b5-487b-9a6a-efa7e7fd3a3b"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
